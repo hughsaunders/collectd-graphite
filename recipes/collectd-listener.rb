@@ -35,7 +35,7 @@ when "ubuntu", "debian"
 end
 
 package pkg_name do
-  action :install
+  action node["osops"]["do_package_upgrades"] == true ? :upgrade : :install
 end
 
 collectd_listener_endpoint = get_bind_endpoint("collectd","network-listener")
